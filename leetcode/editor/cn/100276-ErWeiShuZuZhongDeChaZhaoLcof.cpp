@@ -44,11 +44,21 @@ using namespace std;
 class Solution {
 public:
     bool findNumberIn2DArray(vector<vector<int>> &matrix, int target) {
-        for (auto  &row:matrix) {
-            for (auto &col:row) {
-                if (col==target){
-                    return true;
-                }
+        if (matrix.empty()) {
+            return false;
+        }
+        auto rows = matrix.size();
+        int row = rows - 1;
+        auto cols = matrix[0].size();
+        int col = 0;
+        while (row >= 0 && col < cols) {
+            if (matrix[row][col] == target) {
+                return true;
+            }
+            if (matrix[row][col] < target) {
+                ++col;
+            } else if (matrix[row][col] > target) {
+                --row;
             }
         }
         return false;
@@ -59,7 +69,11 @@ public:
 
 int main() {
     Solution s;
-    vector<vector<int>> data={{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30}};
-    auto res = s.findNumberIn2DArray(data, 8);
+    vector<vector<int>> data = {{1,  4,  7,  11, 15},
+                                {2,  5,  8,  12, 19},
+                                {3,  6,  9,  16, 22},
+                                {10, 13, 14, 17, 24},
+                                {18, 21, 23, 26, 30}};
+    auto res = s.findNumberIn2DArray(data, 20);
     cout << res << endl;
 }
