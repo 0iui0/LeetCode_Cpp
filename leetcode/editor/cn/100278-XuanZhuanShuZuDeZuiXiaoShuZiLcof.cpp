@@ -27,13 +27,21 @@ using namespace std;
 class Solution {
 public:
     int minArray(vector<int> &numbers) {
-        int min = numbers.at(numbers.size()-1);
-        for (auto n:numbers) {
-            if (n < min) {
-                min = n;
+        int low = 0;
+        int high = numbers.size() - 1;
+        if(numbers[low]<numbers[high])
+            return numbers[low];
+        while (low < high) {
+            int pivot = low + (high - low) / 2;
+            if (numbers[pivot] > numbers[high]) {
+                low = pivot + 1;
+            } else if (numbers[pivot] < numbers[high]) {
+                high = pivot;
+            } else {
+                high--;
             }
         }
-        return min;
+        return numbers[low];
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
@@ -41,7 +49,7 @@ public:
 
 int main() {
     Solution s;
-    vector<int> data{7, 1, 5, 3, 6, 4};
+    vector<int> data{1, 0, 1, 1, 1, 1};
     auto res = s.minArray(data);
     cout << res << endl;
 }
