@@ -49,65 +49,31 @@ using namespace std;
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
+
     bool exist(vector<vector<char>> &board, string word) {
-        int r = board.size();
-        int c = board[0].size();
-        if (word.size() > r * c) {
-            return false;
-        }
+        r = board.size();
+        c = board[0].size();
         for (int i = 0; i < r; ++i) {
             for (int j = 0; j < c; ++j) {
-                if (word[0] == board[i][j]) {
-                    cout << "=========================" << endl;
-                    std::queue<int> queue;
-                    std::queue<vector<int>> queuePat;
-                    std::queue<int> queueIndex;
-                    int seq = i * c + j;
-                    queue.push(seq);
-                    queuePat.push({seq});
-                    queueIndex.push(0);
-                    while (!queue.empty()) {
-                        auto ij = queue.front();
-                        cout << board[ij / c][ij % c] << endl;
-                        queue.pop();
-                        auto path = queuePat.front();
-                        queuePat.pop();
-                        auto index = queueIndex.front();
-                        queueIndex.pop();
-                        if (index == word.size() - 1) {
-                            return true;
-                        }
-                        index++;
-                        int di[] = {1, 0, -1, 0};
-                        int dj[] = {0, 1, 0, -1};
-                        for (int k = 0; k < 4; ++k) {
-                            int m = ij / c + di[k];
-                            int n = ij % c + dj[k];
-                            if (m < 0 || m > r - 1 || n < 0 || n > c - 1) {
-                                continue;
-                            }
-                            int p = m * c + n;
-                            auto x = std::find(path.begin(), path.end(), p);
-                            if (!(x == path.end())) {
-                                continue;
-                            }
-                            if (board[m][n] == word[index]) {
-                                if (index == word.size() - 1) {
-                                    return true;
-                                }
-                                queue.push(p);
-                                auto tmp = path;
-                                tmp.push_back(p);
-                                queuePat.push(tmp);
-                                queueIndex.push(index);
-                            }
-                        }
-                    }
-                }
+                if (dfs(board, word, i, j, 0)) return true;
             }
         }
-
         return false;
+    }
+
+
+private:
+    int r, c;
+
+    bool dfs(vector<vector<char>> &board, string word, int i, int j, int k) {
+        if (i < 0 || j < 0 || i >= r || j >= c || board[i][j] != word[k]) return false;
+        if (word.size() - 1 == k) return true;
+        board[i][j] = '\0';
+        if (dfs(board, word, i + 1, j, k + 1) || dfs(board, word, i - 1, j, k + 1) ||
+            dfs(board, word, i, j + 1, k + 1) || dfs(board, word, i, j - 1, k + 1)) {
+            return true;
+        }
+        board[i][j] = word[k];
     }
 
 };
