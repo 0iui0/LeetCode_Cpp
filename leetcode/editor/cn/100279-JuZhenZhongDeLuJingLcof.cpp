@@ -64,16 +64,19 @@ public:
 
 private:
     int r, c;
-
     bool dfs(vector<vector<char>> &board, string word, int i, int j, int k) {
         if (i < 0 || j < 0 || i >= r || j >= c || board[i][j] != word[k]) return false;
         if (word.size() - 1 == k) return true;
         board[i][j] = '\0';
-        if (dfs(board, word, i + 1, j, k + 1) || dfs(board, word, i - 1, j, k + 1) ||
-            dfs(board, word, i, j + 1, k + 1) || dfs(board, word, i, j - 1, k + 1)) {
-            return true;
+        int di[] = {1, 0, -1, 0};
+        int dj[] = {0, 1, 0, -1};
+        for (int q = 0; q < 4; ++q) {
+            int m = i + di[q];
+            int n = j + dj[q];
+            if (dfs(board, word, m, n, k + 1)) return true;
         }
         board[i][j] = word[k];
+        return false;
     }
 
 };
