@@ -34,8 +34,29 @@ using namespace std;
 class Solution {
 public:
     int movingCount(int m, int n, int k) {
-        vector<vector<bool>> vis(m, vector<bool>(n, false));;
-        return dfs(m, n, 0, 0, k, vis);
+        vector<bool> vis(m * n, false);
+        queue<int> Q;
+        int cnt = 0;
+        Q.push(0);
+        vis[0] = true;
+        while (!Q.empty()) {
+            int mid = Q.front();
+            Q.pop();
+            cnt++;
+            int right = mid + 1;
+            int rSum = sumDigtial(right / n) + sumDigtial(right % n);
+            int down = mid + n;
+            int dSum = sumDigtial(down / n) + sumDigtial(down % n);
+            if (right < m * n && rSum <= k && !vis[right]) {
+                vis[right] = true;
+                Q.push(right);
+            }
+            if (down < m * n && dSum <= k && !vis[down]) {
+                vis[down] = true;
+                Q.push(down);
+            }
+        }
+        return cnt;
     }
 
 
@@ -43,25 +64,18 @@ private:
     int sumDigtial(int a) {
         int sum = a % 10;
         int tmp = a / 10;
-        while(tmp > 0) {
+        while (tmp > 0) {
             sum += tmp % 10;
             tmp /= 10;
         }
         return sum;
     }
-
-    int dfs(int m, int n, int i, int j, int k, vector<vector<bool>> &visit) {
-        if (i >= m || j >= n || k<sumDigtial(i) + sumDigtial(j) || visit[i][j] ) {return 0;}
-        visit[i][j] = true;
-        return 1 + dfs(m, n, i + 1, j, k, visit) + dfs(m, n, i, j + 1, k, visit);
-    }
-
 };
 //leetcode submit region end(Prohibit modification and deletion)
 
 
 int main() {
     Solution s;
-    auto res = s.movingCount(7, 2, 3);
+    auto res = s.movingCount(2, 3, 3);
     cout << res << endl;
 }
