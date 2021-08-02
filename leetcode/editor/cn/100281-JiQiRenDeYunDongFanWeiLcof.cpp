@@ -43,17 +43,12 @@ public:
             int start = Q.front();
             Q.pop();
             cnt++;
-            int left = start - 1;
             int right = start + 1;
-            int up = start - n;
             int down = start + n;
-            if (start % n == 0) {
-                left = -1;
-            }
             if (start % n == (n - 1)) {
                 right = -1;
             }
-            int dirs[4] = {left, right, up, down};
+            int dirs[2] = {right, down};
             for (auto di:dirs) {
                 if (di >= 0 && di < m * n && !vis[di] && sumDigtial(di / n) + sumDigtial(di % n) <= k) {
                     vis[di] = true;
