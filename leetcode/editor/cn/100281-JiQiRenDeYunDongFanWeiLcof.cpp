@@ -40,20 +40,25 @@ public:
         Q.push(0);
         vis[0] = true;
         while (!Q.empty()) {
-            int mid = Q.front();
+            int start = Q.front();
             Q.pop();
             cnt++;
-            int right = mid + 1;
-            int rSum = sumDigtial(right / n) + sumDigtial(right % n);
-            int down = mid + n;
-            int dSum = sumDigtial(down / n) + sumDigtial(down % n);
-            if (right < m * n && rSum <= k && !vis[right]) {
-                vis[right] = true;
-                Q.push(right);
+            int left = start - 1;
+            int right = start + 1;
+            int up = start - n;
+            int down = start + n;
+            if (start % n == 0) {
+                left = -1;
             }
-            if (down < m * n && dSum <= k && !vis[down]) {
-                vis[down] = true;
-                Q.push(down);
+            if (start % n == (n - 1)) {
+                right = -1;
+            }
+            int dirs[4] = {left, right, up, down};
+            for (auto di:dirs) {
+                if (di >= 0 && di < m * n && !vis[di] && sumDigtial(di / n) + sumDigtial(di % n) <= k) {
+                    vis[di] = true;
+                    Q.push(di);
+                }
             }
         }
         return cnt;
@@ -76,6 +81,6 @@ private:
 
 int main() {
     Solution s;
-    auto res = s.movingCount(2, 3, 3);
+    auto res = s.movingCount(14, 14, 5);
     cout << res << endl;
 }
