@@ -36,7 +36,14 @@ public:
         if (n <= 3) {
             return n - 1;
         }
-        return pow(3, n / 3) * 4 / (4 - n % 3);
+        int num = n / 3;
+        int rem = n % 3;
+        if (rem == 0) rem = 1;
+        if (rem == 1) {
+            num--;
+            rem = 4;
+        }
+        return pow(3, num) * rem;
 
     }
 };
