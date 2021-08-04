@@ -58,12 +58,7 @@ using namespace std;
 class Solution {
 public:
     int hammingWeight(uint32_t n) {
-        int cnt = 0;
-        while (n) {
-            cnt++;
-            n = (n - 1) & n;
-        }
-        return cnt;
+        return __builtin_popcount(n);
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
