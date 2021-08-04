@@ -21,3 +21,4 @@ add_executable(100277-QingWaTiaoTaiJieWenTiLcof leetcode/editor/cn/100277-QingWa
 add_executable(100278-XuanZhuanShuZuDeZuiXiaoShuZiLcof leetcode/editor/cn/100278-XuanZhuanShuZuDeZuiXiaoShuZiLcof.cpp)
 add_executable(100279-JuZhenZhongDeLuJingLcof leetcode/editor/cn/100279-JuZhenZhongDeLuJingLcof.cpp)
 add_executable(100281-JiQiRenDeYunDongFanWeiLcof leetcode/editor/cn/100281-JiQiRenDeYunDongFanWeiLcof.cpp)
+add_executable(100284-JianShengZiLcof leetcode/editor/cn/100284-JianShengZiLcof.cpp)
