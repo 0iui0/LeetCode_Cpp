@@ -38,10 +38,11 @@ public:
         }
         int num = n / 3;
         int rem = n % 3;
-        if (rem == 0) rem = 1;
-        if (rem == 1) {
+        if (rem == 0) {
+            rem = 1;
+        } else if (rem == 1) {
             num--;
-            rem = 4;
+            rem += 3;
         }
         return pow(3, num) * rem;
 
@@ -52,5 +53,5 @@ public:
 
 int main() {
     Solution s;
-    cout << s.cuttingRope(8) << endl;
+    cout << s.cuttingRope(6) << endl;
 }
