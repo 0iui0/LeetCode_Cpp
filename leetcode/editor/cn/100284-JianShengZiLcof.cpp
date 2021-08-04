@@ -33,7 +33,11 @@ using namespace std;
 class Solution {
 public:
     int cuttingRope(int n) {
-        return n <= 3 ? n - 1 : pow(3, n / 3) * 4 / (4 - n % 3);
+        if (n <= 3) {
+            return n - 1;
+        }
+        return pow(3, n / 3) * 4 / (4 - n % 3);
+
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
