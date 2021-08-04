@@ -23,3 +23,4 @@ add_executable(100279-JuZhenZhongDeLuJingLcof leetcode/editor/cn/100279-JuZhenZh
 add_executable(100281-JiQiRenDeYunDongFanWeiLcof leetcode/editor/cn/100281-JiQiRenDeYunDongFanWeiLcof.cpp)
 add_executable(100284-JianShengZiLcof leetcode/editor/cn/100284-JianShengZiLcof.cpp)
 add_executable(100285-JianShengZiIiLcof leetcode/editor/cn/100285-JianShengZiIiLcof.cpp)
+add_executable(100292-ErJinZhiZhong1deGeShuLcof leetcode/editor/cn/100292-ErJinZhiZhong1deGeShuLcof.cpp)
