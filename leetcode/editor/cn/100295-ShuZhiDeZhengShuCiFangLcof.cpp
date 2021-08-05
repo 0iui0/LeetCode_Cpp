@@ -46,25 +46,29 @@ using namespace std;
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
-    double myPow(double x, int n) {
-        if (x == 0) {
-            return 0;
+    double myPow(double x, long n) {
+        if (n == 0) {
+            return 1;
         }
-        double tmp = 1;
-        int m = n;
-        if (m < 0) {
-            m = -m;
-        }
-        for (int i = 1; i <= m; ++i) {
-            tmp = tmp * x;
+        if (n == 1) {
+            return x;
         }
         if (n < 0) {
-            return 1 / tmp;
-        } else {
-            return tmp;
+            n = -n;
+            x = 1 / x;
         }
-
-
+        //x^n=x^{n/2} * x^{n/2} n为偶数
+        if ((n & 0x1) == 0) {
+            double result = myPow(x, n >> 1);
+            result *= result;
+            return result;
+        } else {
+            //x^n=x^{(n-1)/2} * x^{(n-1)/2} *x n为奇数
+            double result = myPow(x, n >> 1);
+            result *= result;
+            result *= x;
+            return result;
+        }
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
@@ -72,5 +76,5 @@ public:
 
 int main() {
     Solution s;
-    cout << s.myPow(2, 123) << endl;
+    cout << s.myPow(2, -2) << endl;
 }
