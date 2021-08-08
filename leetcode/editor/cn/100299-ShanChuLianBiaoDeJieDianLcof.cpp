@@ -49,14 +49,12 @@ public:
         if (head->val == val) {
             return head->next;
         }
-        ListNode *first = head;
-        ListNode *second = head->next;
+        ListNode *second = head;
         while (second) {
-            if (second->val == val) {
-                first->next = second->next;
+            if (second->next->val == val) {
+                second->next = second->next->next;
                 return head;
             }
-            first = second;
             second = second->next;
         }
         return head;
