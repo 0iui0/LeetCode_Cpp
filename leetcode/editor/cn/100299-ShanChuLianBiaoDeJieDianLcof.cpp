@@ -46,16 +46,13 @@ using namespace std;
 class Solution {
 public:
     ListNode *deleteNode(ListNode *head, int val) {
+        if (head == nullptr) {
+            return nullptr;
+        }
         if (head->val == val) {
             return head->next;
-        }
-        ListNode *second = head;
-        while (second) {
-            if (second->next->val == val) {
-                second->next = second->next->next;
-                return head;
-            }
-            second = second->next;
+        } else {
+            head->next = deleteNode(head->next, val);
         }
         return head;
     }
@@ -65,18 +62,18 @@ public:
 
 int main() {
     Solution s;
-    auto l1 =new ListNode(1);
-    auto l2 =new ListNode(2);
-    auto l3 =new ListNode(3);
-    auto l4 =new ListNode(4);
-    auto l5 =new ListNode(5);
-    l1->next=l2;
-//    l2->next=l3;
-//    l3->next=l4;
-//    l4->next=l5;
-    auto head=s.deleteNode(l1,1);
-    while (head){
+    auto l1 = new ListNode(1);
+    auto l2 = new ListNode(2);
+    auto l3 = new ListNode(3);
+    auto l4 = new ListNode(4);
+    auto l5 = new ListNode(5);
+    l1->next = l2;
+    l2->next = l3;
+    l3->next = l4;
+    l4->next = l5;
+    auto head = s.deleteNode(l1, 5);
+    while (head) {
         cout << head->val << endl;
-        head=head->next;
+        head = head->next;
     }
 }
