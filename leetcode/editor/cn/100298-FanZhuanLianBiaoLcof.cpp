@@ -36,15 +36,17 @@ using namespace std;
 class Solution {
 public:
     ListNode *reverseList(ListNode *head) {
-        ListNode *cur = head;
-        ListNode *pre = nullptr;
-        while (cur) {
-            ListNode *tmp = cur->next;
-            cur->next = pre;
-            pre = cur;
-            cur = tmp;
+        return recur(head, nullptr);
+    }
+
+private:
+    ListNode *recur(ListNode *cur, ListNode *pre){
+        if(cur== nullptr){
+            return pre;
         }
-        return pre;
+        ListNode *node= recur(cur->next,cur);
+        cur->next=pre;
+        return node;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
