@@ -24,16 +24,14 @@ using namespace std;
 class Solution {
 public:
     string replaceSpace(string s) {
-        char oldVal=' ';
-        string newVal="%20";
-        int pos=0;
-        while (pos<s.size()){
-            if(s[pos]!=oldVal){
-                ++pos;
-            } else{
-                s.replace(pos,1,newVal);
-                pos+=newVal.size();
-            }
+        char oldVal = ' ';
+        string newVal = "%20";
+        int pos = 0;
+        while (pos < s.length()) {
+            if (s[pos] == oldVal) {
+                s.replace(pos, 1, newVal);
+                pos += newVal.length();
+            } else pos++;
         }
         return s;
     }
