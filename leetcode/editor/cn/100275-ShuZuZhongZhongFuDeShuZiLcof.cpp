@@ -28,18 +28,13 @@ using namespace std;
 class Solution {
 public:
     int findRepeatNumber(vector<int> &nums) {
-        for (int i=0;i<nums.size();i++) {
-            while (nums[i]!=i){
-                if(nums[i]==nums[nums[i]]){
-                    return nums[i];
-                }
-                int tmp=nums[i];
-                nums[i]=nums[tmp];
-                nums[tmp]=tmp;
+        map<int, int> tmp;
+        for (auto n:nums) {
+            tmp[n]++;
+            if (tmp[n] > 1) {
+                return n;
             }
-
         }
-
         return -1;
     }
 };
