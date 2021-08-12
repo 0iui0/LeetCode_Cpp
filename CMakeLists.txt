@@ -29,3 +29,4 @@ add_executable(100296-DaYinCong1daoZuiDaDeNweiShuLcof leetcode/editor/cn/100296-
 add_executable(100299-ShanChuLianBiaoDeJieDianLcof leetcode/editor/cn/100299-ShanChuLianBiaoDeJieDianLcof.cpp)
 add_executable(100297-ZhengZeBiaoDaShiPiPeiLcof leetcode/editor/cn/100297-ZhengZeBiaoDaShiPiPeiLcof.cpp)
 add_executable(100302-BaoHanMinhanShuDeZhanLcof leetcode/editor/cn/100302-BaoHanMinhanShuDeZhanLcof.cpp)
+add_executable(100329-ZaiPaiXuShuZuZhongChaZhaoShuZiLcof leetcode/editor/cn/100329-ZaiPaiXuShuZuZhongChaZhaoShuZiLcof.cpp)
