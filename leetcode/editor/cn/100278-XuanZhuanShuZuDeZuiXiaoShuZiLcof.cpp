@@ -29,13 +29,17 @@ public:
     int minArray(vector<int> &numbers) {
         if (numbers.empty()) return -1;
         int i = 0, j = numbers.size() - 1;
-        while (i <= j) {
-            if (i + 1 < numbers.size() && numbers[i + 1] < numbers[i]) return numbers[i + 1];
-            if (j - 1 >= 0 && numbers[j - 1] > numbers[j]) return numbers[j];
-            i++;
-            j--;
+        if (numbers[j] > numbers[i]) return numbers[i];
+        while (i < j) {
+            int m = (i + j) >> 1;
+            if (numbers[m] > numbers[j])
+                i = m + 1;
+            else if (numbers[m] < numbers[j])
+                j = m;
+            else
+                j = j - 1;
         }
-        return numbers[0];
+        return numbers[i];
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
@@ -43,7 +47,7 @@ public:
 
 int main() {
     Solution s;
-    vector<int> data{1, 0, 1, 1, 1, 1};
+    vector<int> data{2, 0, 1, 1, 1, 1};
     auto res = s.minArray(data);
     cout << res << endl;
 }
