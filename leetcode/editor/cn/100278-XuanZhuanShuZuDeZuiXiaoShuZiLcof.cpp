@@ -27,21 +27,15 @@ using namespace std;
 class Solution {
 public:
     int minArray(vector<int> &numbers) {
-        int low = 0;
-        int high = numbers.size() - 1;
-        if(numbers[low]<numbers[high])
-            return numbers[low];
-        while (low < high) {
-            int pivot = low + (high - low) / 2;
-            if (numbers[pivot] > numbers[high]) {
-                low = pivot + 1;
-            } else if (numbers[pivot] < numbers[high]) {
-                high = pivot;
-            } else {
-                high--;
-            }
+        if (numbers.empty()) return -1;
+        int i = 0, j = numbers.size() - 1;
+        while (i <= j) {
+            if (i + 1 < numbers.size() && numbers[i + 1] < numbers[i]) return numbers[i + 1];
+            if (j - 1 >= 0 && numbers[j - 1] > numbers[j]) return numbers[j];
+            i++;
+            j--;
         }
-        return numbers[low];
+        return numbers[0];
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
