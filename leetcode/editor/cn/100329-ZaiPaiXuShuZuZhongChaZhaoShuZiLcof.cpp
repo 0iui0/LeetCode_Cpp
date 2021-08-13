@@ -41,28 +41,24 @@ using namespace std;
 class Solution {
 public:
     int search(vector<int> &nums, int target) {
-        if (nums.empty())
-            return 0;
         int i = 0, j = nums.size() - 1;
-        while (i <= j) {
-            int m = (i + j) >> 1;
-            if (target >= nums[m])
-                i = m + 1;
-            else
-                j = m - 1;
-        }
-        int r = i;
-        if (j - 1 > 0 && nums[j - 1] != target) return 0;
-        i = 0;
         while (i <= j) {
             int m = (i + j) >> 1;
             if (target > nums[m])
                 i = m + 1;
-            else
+            else if (target < nums[m])
                 j = m - 1;
+            else {
+                if (nums[i] == nums[j]) {
+                    return j - i + 1;
+                }
+                if (nums[i] < target)
+                    i++;
+                if (nums[j] > target)
+                    j--;
+            }
         }
-        int l = j;
-        return r - l - 1;
+        return 0;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
