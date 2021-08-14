@@ -56,27 +56,16 @@ public:
         if (!root) return v;
         queue<TreeNode *> q;
         q.push(root);
-        vector<int> tmpV;
-        tmpV.push_back(root->val);
-        v.push_back(tmpV);
         while (!q.empty()) {
-            tmpV.clear();
+            vector<int> tmpV;
             for (int i = q.size(); i > 0; i--) {
                 TreeNode *tmp = q.front();
                 q.pop();
-                if (tmp->left) {
-                    q.push(tmp->left);
-                    tmpV.push_back(tmp->left->val);
-                }
-                if (tmp->right) {
-                    q.push(tmp->right);
-                    tmpV.push_back(tmp->right->val);
-                }
+                tmpV.push_back(tmp->val);
+                if (tmp->left) q.push(tmp->left);
+                if (tmp->right) q.push(tmp->right);
             }
-            if (!tmpV.empty()) {
-                v.push_back(tmpV);
-            }
-
+            v.push_back(tmpV);
         }
         return v;
     }
