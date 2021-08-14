@@ -52,23 +52,20 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode *root) {
-        vector<vector<int>> v;
-        if (!root) return v;
-        queue<TreeNode *> q;
-        q.push(root);
-        while (!q.empty()) {
-            vector<int> tmpV;
-            for (int i = q.size(); i > 0; i--) {
-                TreeNode *tmp = q.front();
-                q.pop();
-                tmpV.push_back(tmp->val);
-                if (tmp->left) q.push(tmp->left);
-                if (tmp->right) q.push(tmp->right);
-            }
-            v.push_back(tmpV);
-        }
-        return v;
+        dfs(0, root);
+        return ans;
     }
+
+private:
+    void dfs(int depth, TreeNode *root) {
+        if (!root) return;
+        if (ans.size() == depth) ans.push_back(vector<int>{});
+        ans[depth].push_back(root->val);
+        dfs(depth + 1, root->left), dfs(depth + 1, root->right);
+    }
+
+private:
+    vector<vector<int>> ans;
 };
 //leetcode submit region end(Prohibit modification and deletion)
 
