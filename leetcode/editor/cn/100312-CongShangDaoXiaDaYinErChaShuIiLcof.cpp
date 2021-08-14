@@ -53,30 +53,30 @@ class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode *root) {
         vector<vector<int>> v;
-        if (root == NULL) return v;
+        if (!root) return v;
         queue<TreeNode *> q;
         q.push(root);
-        int nextLv = 0, toBePrint = 1;
         vector<int> tmpV;
+        tmpV.push_back(root->val);
+        v.push_back(tmpV);
         while (!q.empty()) {
-            TreeNode *tmp = q.front();
-            tmpV.push_back(tmp->val);
-            if (tmp->left != NULL) {
-                q.push(tmp->left);
-                ++nextLv;
+            tmpV.clear();
+            for (int i = q.size(); i > 0; i--) {
+                TreeNode *tmp = q.front();
+                q.pop();
+                if (tmp->left) {
+                    q.push(tmp->left);
+                    tmpV.push_back(tmp->left->val);
+                }
+                if (tmp->right) {
+                    q.push(tmp->right);
+                    tmpV.push_back(tmp->right->val);
+                }
             }
-            if (tmp->right != NULL) {
-                q.push(tmp->right);
-                ++nextLv;
-            }
-            q.pop();
-            --toBePrint;
-            if (toBePrint == 0) {
+            if (!tmpV.empty()) {
                 v.push_back(tmpV);
-                tmpV.clear();
-                toBePrint = nextLv;
-                nextLv = 0;
             }
+
         }
         return v;
     }
@@ -86,5 +86,14 @@ public:
 
 int main() {
     Solution s;
-    cout << s << endl;
+    TreeNode *r = new TreeNode(0);
+    TreeNode *l0 = new TreeNode(1);
+    TreeNode *r0 = new TreeNode(2);
+    TreeNode *r1 = new TreeNode(3);
+    r->left = l0;
+    r->right = r0;
+    r0->right = r1;
+    print_tree(r);
+    s.levelOrder(r);
+//    cout << s << endl;
 }
