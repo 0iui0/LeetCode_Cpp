@@ -31,13 +31,12 @@ using namespace std;
 class Solution {
 public:
     vector<int> exchange(vector<int> &nums) {
-        int low = 0, fast = 0;
-        while (fast < nums.size()) {
-            if (nums[fast] & 0x1) {
-                swap(nums[low], nums[fast]);
-                low++;
-            }
-            fast++;
+        int i = 0, j = nums.size() - 1;
+        while (i < j) {
+            while ((nums[i] & 0x1) && (i < j)) i++;
+            while ((!(nums[j] & 0x1)) && (i < j)) j--;
+            if (i < j)
+                swap(nums[i], nums[j]);
         }
         return nums;
     }
