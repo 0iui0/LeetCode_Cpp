@@ -46,9 +46,7 @@ using namespace std;
 class Solution {
 public:
     ListNode *deleteNode(ListNode *head, int val) {
-        if (head == nullptr) {
-            return nullptr;
-        }
+        if (!head) return nullptr;
         if (head->val == val) {
             return head->next;
         } else {
