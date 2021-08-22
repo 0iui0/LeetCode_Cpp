@@ -32,15 +32,12 @@ public:
     ListNode *getKthFromEnd(ListNode *head, int k) {
         auto first = head;
         auto second = head;
-        int t = 0;
+        for (int i = 0; i < k; ++i) {
+            second = second->next;
+        }
         while (second) {
-            if (t >= k) {
-                first = first->next;
-                second = second->next;
-            } else {
-                second = second->next;
-            }
-            t++;
+            first = first->next;
+            second = second->next;
         }
         return first;
 
