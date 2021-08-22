@@ -77,19 +77,12 @@ using namespace std;
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *ha, ListNode *hb) {
-        if (!ha || !hb) return nullptr;
-        auto a = ha;
-        auto b = hb;
-        map<ListNode *, int> m;
-        while (a) {
-            m[a] = a->val;
-            a = a->next;
+        auto a = ha, b = hb;
+        while (a != b) {
+            a = (!a) ? hb : a->next;
+            b = (!b) ? ha : b->next;
         }
-        while (b) {
-            if (m[b]) return b;
-            b = b->next;
-        }
-        return nullptr;
+        return a;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
