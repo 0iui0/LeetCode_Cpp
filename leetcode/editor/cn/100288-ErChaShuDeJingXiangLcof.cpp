@@ -51,10 +51,18 @@ using namespace std;
 class Solution {
 public:
     TreeNode *mirrorTree(TreeNode *root) {
-        if (!root) return nullptr;
-        auto tmp = root->left;
-        root->left = mirrorTree(root->right);
-        root->right = mirrorTree(tmp);
+        if (!root) return root;
+        queue<TreeNode *> q;
+        q.push(root);
+        while (!q.empty()) {
+            auto r = q.front();
+            q.pop();
+            if (r->left) q.push(r->left);
+            if (r->right) q.push(r->right);
+            auto l = r->left;
+            r->left = r->right;
+            r->right = l;
+        }
         return root;
     }
 };
