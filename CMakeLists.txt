@@ -44,3 +44,4 @@ add_executable(100326-LiangGeLianBiaoDeDiYiGeGongGongJieDianLcof leetcode/editor
 add_executable(100294-LianBiaoZhongDaoShuDiKgeJieDianLcof leetcode/editor/cn/100294-LianBiaoZhongDaoShuDiKgeJieDianLcof.cpp)
 add_executable(100344-GuPiaoDeZuiDaLiRunLcof leetcode/editor/cn/100344-GuPiaoDeZuiDaLiRunLcof.cpp)
 add_executable(100304-LianXuZiShuZuDeZuiDaHeLcof leetcode/editor/cn/100304-LianXuZiShuZuDeZuiDaHeLcof.cpp)
+add_executable(100327-LiWuDeZuiDaJieZhiLcof leetcode/editor/cn/100327-LiWuDeZuiDaJieZhiLcof.cpp)
