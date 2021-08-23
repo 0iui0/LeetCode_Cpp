@@ -35,14 +35,13 @@ class Solution {
 public:
     int maxSubArray(vector<int> &nums) {
         if (!nums.size()) return -1;
-        vector<int> dp(nums.size(), 0);
-        dp[0] = nums[0];
-        int seqSum = nums[0];
-        for (int i = 1; i < nums.size(); ++i) {
-            seqSum = max(seqSum + nums[i], nums[i]);
-            dp[i] = max(dp[i - 1], seqSum);
+        int seqSum = 0;
+        int ans = nums[0];
+        for (auto n:nums) {
+            seqSum = max(seqSum + n, n);
+            ans = max(ans, seqSum);
         }
-        return dp[nums.size() - 1];
+        return ans;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
