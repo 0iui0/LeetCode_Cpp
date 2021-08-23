@@ -37,13 +37,20 @@ public:
         if (grid.empty()) return 0;
         int r = grid.size();
         int c = grid[0].size();
-        vector<vector<int>> dp(r + 1, vector<int>(c + 1, 0));
-        for (int i = 1; i < r + 1; ++i) {
-            for (int j = 1; j < c + 1; ++j) {
-                dp[i][j] = max(dp[i][j - 1], dp[i - 1][j]) + grid[i-1][j-1];
+        vector<int> up(r, 0);
+        vector<int> tmUp(r, 0);
+        int left = 0;
+        int ans = 0;
+        for (int i = 0; i < r; ++i) {
+            for (int j = 0; j < c + 1; ++j) {
+                ans = max(up[j], left) + grid[i][j];
+                left = ans;
+                tmUp[j] = ans;
             }
+            up = tmUp;
+            left = 0;
         }
-        return dp[r][c];
+        return ans;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
