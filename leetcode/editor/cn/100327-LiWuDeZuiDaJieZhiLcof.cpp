@@ -37,17 +37,17 @@ public:
         if (grid.empty()) return 0;
         int r = grid.size();
         int c = grid[0].size();
-        vector<int> up(r, 0);
-        vector<int> tmUp(r, 0);
+        vector<int> up(c, 0);
+        vector<int> tmUp(c, 0);
         int left = 0;
         int ans = 0;
         for (int i = 0; i < r; ++i) {
-            for (int j = 0; j < c + 1; ++j) {
+            for (int j = 0; j < c; ++j) {
                 ans = max(up[j], left) + grid[i][j];
                 left = ans;
                 tmUp[j] = ans;
             }
-            up = tmUp;
+            swap(up, tmUp);
             left = 0;
         }
         return ans;
