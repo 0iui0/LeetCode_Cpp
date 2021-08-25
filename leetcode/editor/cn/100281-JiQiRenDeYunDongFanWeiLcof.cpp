@@ -35,36 +35,34 @@ class Solution {
 public:
     int movingCount(int m, int n, int k) {
         vector<vector<bool>> vis(m, vector<bool>(n, false));
-        queue<pair<int, int>> Q;
-        int cnt = 0;
-        Q.push(make_pair(0, 0));
-        vis[0][0] = true;
-        while (!Q.empty()) {
-            auto start = Q.front();
-            Q.pop();
-            cnt++;
-            if (start.second + 1 < n && !vis[start.first][start.second + 1] &&
-                sumDigtial(start.first) + sumDigtial(start.second + 1) <= k) {
-                vis[start.first][start.second + 1] = true;
-                Q.push(make_pair(start.first, start.second + 1));
-            }
-            if (start.first + 1 < m && !vis[start.first + 1][start.second] &&
-                sumDigtial(start.first + 1) + sumDigtial(start.second) <= k) {
-                vis[start.first + 1][start.second] = true;
-                Q.push(make_pair(start.first + 1, start.second));
-            }
-        }
+        cnt = 0;
+        dfs(m, n, k, vis, 0, 0);
         return cnt;
     }
 
 
 private:
-    int sumDigtial(int a) {
-        int sum = a % 10;
-        int tmp = a / 10;
+    int cnt;
+    void dfs(int m, int n, int k, vector<vector<bool>>& vis, int i, int j) {
+        if (i < 0 || j < 0 || i >= m || j >= n || vis[i][j] || sumDigtial(i) + sumDigtial(j) > k) return;
+        vis[i][j] = true;
+        cnt++;
+        dfs(m, n, k, vis, i + 1, j);
+        dfs(m, n, k, vis, i, j + 1);
+        dfs(m, n, k, vis, i - 1, j);
+        dfs(m, n, k, vis, i + 1, j);
+        return;
+    }
+
+    int sumDigtial(int num) {
+        int sum = num % 10;
+        int tmp = num / 10;
         while (tmp > 0) {
-            sum += tmp % 10;
-            tmp /= 10;
+            //拿到余数
+            tmp = tmp % 10;
+            sum = sum + tmp;
+            //丢掉余数
+            tmp = tmp / 10;
         }
         return sum;
     }
