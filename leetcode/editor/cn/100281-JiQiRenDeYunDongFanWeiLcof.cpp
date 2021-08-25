@@ -34,26 +34,24 @@ using namespace std;
 class Solution {
 public:
     int movingCount(int m, int n, int k) {
-        vector<bool> vis(m * n, false);
-        queue<int> Q;
+        vector<vector<bool>> vis(m, vector<bool>(n, false));
+        queue<pair<int, int>> Q;
         int cnt = 0;
-        Q.push(0);
-        vis[0] = true;
+        Q.push(make_pair(0, 0));
+        vis[0][0] = true;
         while (!Q.empty()) {
-            int start = Q.front();
+            auto start = Q.front();
             Q.pop();
             cnt++;
-            int right = start + 1;
-            int down = start + n;
-            if (start % n == (n - 1)) {
-                right = -1;
+            if (start.second + 1 < n && !vis[start.first][start.second + 1] &&
+                sumDigtial(start.first) + sumDigtial(start.second + 1) <= k) {
+                vis[start.first][start.second + 1] = true;
+                Q.push(make_pair(start.first, start.second + 1));
             }
-            int dirs[2] = {right, down};
-            for (auto di:dirs) {
-                if (di >= 0 && di < m * n && !vis[di] && sumDigtial(di / n) + sumDigtial(di % n) <= k) {
-                    vis[di] = true;
-                    Q.push(di);
-                }
+            if (start.first + 1 < m && !vis[start.first + 1][start.second] &&
+                sumDigtial(start.first + 1) + sumDigtial(start.second) <= k) {
+                vis[start.first + 1][start.second] = true;
+                Q.push(make_pair(start.first + 1, start.second));
             }
         }
         return cnt;
