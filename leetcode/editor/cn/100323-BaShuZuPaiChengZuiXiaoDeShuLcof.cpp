@@ -42,25 +42,12 @@ public:
         for (int i:nums) {
             strs.push_back(to_string(i));
         }
-        quick_sort(strs, 0, strs.size() - 1);
+        sort(strs.begin(), strs.end(), [](string &x, string &y) { return x + y < y + x; });
         string str = "";
         for (auto s:strs) {
-            str = str + s;
+            str.append(s);
         }
         return str;
-    }
-
-private:
-    void quick_sort(vector<string> &arr, int l, int r) {
-        if (l >= r) return;
-        int i = l - 1, j = r + 1;
-        string x = arr[(l + r) >> 1];
-        while (i < j) {
-            do i++; while (arr[i] + x < x + arr[i]);
-            do j--; while (arr[j] + x > x + arr[j]);
-            if (i < j) swap(arr[i], arr[j]);
-        }
-        quick_sort(arr, l, j), quick_sort(arr, j + 1, r);
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
