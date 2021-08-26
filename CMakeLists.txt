@@ -49,3 +49,4 @@ add_executable(100325-BaShuZiFanYiChengZiFuChuanLcof leetcode/editor/cn/100325-B
 add_executable(100332-ZuiChangBuHanZhongFuZiFuDeZiZiFuChuanLcof leetcode/editor/cn/100332-ZuiChangBuHanZhongFuZiFuDeZiZiFuChuanLcof.cpp)
 add_executable(100301-ZuiXiaoDeKgeShuLcof leetcode/editor/cn/100301-ZuiXiaoDeKgeShuLcof.cpp)
 add_executable(100323-BaShuZuPaiChengZuiXiaoDeShuLcof leetcode/editor/cn/100323-BaShuZuPaiChengZuiXiaoDeShuLcof.cpp)
+add_executable(100341-BuKePaiZhongDeShunZiLcof leetcode/editor/cn/100341-BuKePaiZhongDeShunZiLcof.cpp)
