@@ -34,13 +34,13 @@ using namespace std;
 class Solution {
 public:
     bool isStraight(vector<int> &nums) {
-        sort(nums.begin(), nums.end());
-        int jokerCnt = 0;
-        for (int i = 0; i < 4; ++i) {
-            if (!nums[i]) jokerCnt++;
-            else if (nums[i] == nums[i + 1]) return false;
+        set<int> sets;
+        for (int n:nums) {
+            if (!n) continue;
+            if (sets.find(n) != sets.end()) return false;
+            sets.insert(n);
         }
-        return nums[4] - nums[jokerCnt] < 5;
+        return *sets.rbegin() - *sets.begin() < 5;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
