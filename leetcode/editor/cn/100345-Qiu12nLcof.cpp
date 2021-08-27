@@ -33,8 +33,8 @@ using namespace std;
 class Solution {
 public:
     int sumNums(int n) {
-        if (!n) return 0;
-        return n+ sumNums(n-1);
+        bool x = (n > 0) && (n = n + sumNums(n - 1));
+        return n;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
