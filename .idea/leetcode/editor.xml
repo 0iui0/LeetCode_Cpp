@@ -331,6 +331,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/100319-ErChaShuDeShenDuLcof.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/100319-ErChaShuDeShenDuLcof.cpp" />
+              <option name="questionId" value="100319" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/100322-HeWeiSdeLiangGeShuZiLcof.cpp">
           <value>
             <LeetcodeEditor>
@@ -424,6 +432,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/100341-BuKePaiZhongDeShunZiLcof.cpp" />
               <option name="questionId" value="100341" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/100342-PingHengErChaShuLcof.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/100342-PingHengErChaShuLcof.cpp" />
+              <option name="questionId" value="100342" />
             </LeetcodeEditor>
           </value>
         </entry>

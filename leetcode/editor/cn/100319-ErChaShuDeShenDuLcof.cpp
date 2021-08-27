@@ -45,7 +45,20 @@ private:
 public:
     int maxDepth(TreeNode *root) {
         if (!root) return 0;
-        return 1 + max(maxDepth(root->left), maxDepth(root->right));
+        queue<TreeNode *> q;
+        q.push(root);
+        int depth = 0;
+        while (!q.empty()) {
+            depth++;
+            int n = q.size();
+            for (int i = 0; i < n; ++i) {
+                TreeNode *tmp = q.front();
+                q.pop();
+                if (tmp->left) q.push(tmp->left);
+                if (tmp->right) q.push(tmp->right);
+            }
+        }
+        return depth;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
