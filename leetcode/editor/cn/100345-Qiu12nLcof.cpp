@@ -33,7 +33,8 @@ using namespace std;
 class Solution {
 public:
     int sumNums(int n) {
-        return (1 + n) * n / 2;
+        if (!n) return 0;
+        return n+ sumNums(n-1);
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
