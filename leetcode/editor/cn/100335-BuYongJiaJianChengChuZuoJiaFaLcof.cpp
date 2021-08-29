@@ -27,9 +27,13 @@ using namespace std;
 class Solution {
 public:
     int add(int a, int b) {
-        if (!b) return a;
         //sum=无进位和+进位；异或+与左移
-        return add(a ^ b, (a & b) << 1);
+        while (b) {
+            int c = (a & b) << 1;//carry
+            a = a ^ b;
+            b = c;
+        }
+        return a;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
