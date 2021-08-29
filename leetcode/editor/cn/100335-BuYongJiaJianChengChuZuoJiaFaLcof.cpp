@@ -29,7 +29,7 @@ public:
     int add(int a, int b) {
         //sum=无进位和+进位；异或+与左移
         while (b) {
-            int c = (a & b) << 1;//carry
+            int c = (unsigned int) (a & b) << 1;//carry
             a = a ^ b;
             b = c;
         }
@@ -41,5 +41,5 @@ public:
 
 int main() {
     Solution s;
-    cout << s.add(3, 2) << endl;
+    cout << s.add(-1, 2) << endl;
 }
