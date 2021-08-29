@@ -54,13 +54,10 @@ using namespace std;
 class Solution {
 public:
     TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
-        while (root) {
-            if (root->val > max(p->val, q->val))
-                root = root->left;
-            else if (root->val < min(p->val, q->val))
-                root = root->right;
-            else break;
-        }
+        if (root->val > max(p->val, q->val))
+            return lowestCommonAncestor(root->left, p, q);
+        else if (root->val < min(p->val, q->val))
+            return lowestCommonAncestor(root->right, p, q);
         return root;
     }
 };
