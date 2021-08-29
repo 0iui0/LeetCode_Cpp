@@ -28,12 +28,8 @@ class Solution {
 public:
     int add(int a, int b) {
         //sum=无进位和+进位；异或+与左移
-        while (b) {
-            int c = (unsigned int) (a & b) << 1;//carry
-            a = a ^ b;
-            b = c;
-        }
-        return a;
+        if (!b) return a;
+        return add(a ^ b, (unsigned int) (a & b) << 1);
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
