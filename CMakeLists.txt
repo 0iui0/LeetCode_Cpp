@@ -54,3 +54,4 @@ add_executable(100303-ShuJuLiuZhongDeZhongWeiShuLcof leetcode/editor/cn/100303-S
 add_executable(100345-Qiu12nLcof leetcode/editor/cn/100345-Qiu12nLcof.cpp)
 add_executable(100319-ErChaShuDeShenDuLcof leetcode/editor/cn/100319-ErChaShuDeShenDuLcof.cpp)
 add_executable(100342-PingHengErChaShuLcof leetcode/editor/cn/100342-PingHengErChaShuLcof.cpp)
+add_executable(100346-ErChaSouSuoShuDeZuiJinGongGongZuXianLcof leetcode/editor/cn/100346-ErChaSouSuoShuDeZuiJinGongGongZuXianLcof.cpp)
