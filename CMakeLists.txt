@@ -61,3 +61,4 @@ add_executable(100317-ErChaShuZhongHeWeiMouYiZhiDeLuJingLcof leetcode/editor/cn/
 add_executable(100305-ErChaSouSuoShuYuShuangXiangLianBiaoLcof leetcode/editor/cn/100305-ErChaSouSuoShuYuShuangXiangLianBiaoLcof.cpp)
 add_executable(btree leetcode/editor/cn/include/btree.h)
 add_executable(100333-ErChaSouSuoShuDeDiKdaJieDianLcof leetcode/editor/cn/100333-ErChaSouSuoShuDeDiKdaJieDianLcof.cpp)
+add_executable(100320-ShuZuZhongShuZiChuXianDeCiShuLcof leetcode/editor/cn/100320-ShuZuZhongShuZiChuXianDeCiShuLcof.cpp)
