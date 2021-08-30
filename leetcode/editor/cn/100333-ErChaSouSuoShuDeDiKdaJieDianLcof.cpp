@@ -55,7 +55,7 @@ private:
     void antiInorder(TreeNode *root) {
         if (!root) return;
         antiInorder(root->right);
-//        if (!cnt) return;
+        if (!cnt) return;
         cnt--;
         if (!cnt) {
             kthL = root->val;
