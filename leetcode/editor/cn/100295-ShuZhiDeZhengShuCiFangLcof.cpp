@@ -47,28 +47,12 @@ using namespace std;
 class Solution {
 public:
     double myPow(double x, long n) {
-        if (n == 0) {
-            return 1;
-        }
-        if (n == 1) {
-            return x;
-        }
-        if (n < 0) {
-            n = -n;
-            x = 1 / x;
-        }
-        //x^n=x^{n/2} * x^{n/2} n为偶数
-        if ((n & 0x1) == 0) {
-            double result = myPow(x, n >> 1);
-            result *= result;
-            return result;
-        } else {
-            //x^n=x^{(n-1)/2} * x^{(n-1)/2} *x n为奇数
-            double result = myPow(x, n >> 1);
-            result *= result;
-            result *= x;
-            return result;
-        }
+        if (n == 0) return 1;
+        if (n == 1) return x;
+        if (n < 0) n = -n, x = 1 / x;
+        double ans = myPow(x, n >> 1);
+        if ((n & 0x1) == 0) return ans * ans;
+        else return ans * ans * x;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
