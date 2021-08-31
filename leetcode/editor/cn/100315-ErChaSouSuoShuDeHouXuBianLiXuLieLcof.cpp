@@ -41,7 +41,7 @@ public:
     bool verifyPostorder(vector<int> &postorder) {
         stack<int> incr;
         int root = INT_MAX;
-        // anti-poster:left->right->root root->right->left : 中大小
+        // inv-poster:left->right->root root->right->left : 中大小
         for (int i = postorder.size() - 1; i >= 0; --i) {
             if (postorder[i] > root) return false;
             while (!incr.empty() && incr.top() > postorder[i]) {
