@@ -37,19 +37,20 @@ using namespace std;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-private:
-    bool verify(vector<int> &postorder, int i, int j) {
-        if (i >= j) return true;
-        int p = i;
-        while (postorder[p] < postorder[j]) p++;
-        int m = p;
-        while (postorder[p] > postorder[j]) p++;
-        return p == j && verify(postorder, i, m - 1) && verify(postorder, m, j - 1);
-    }
-
 public:
     bool verifyPostorder(vector<int> &postorder) {
-        return verify(postorder, 0, postorder.size() - 1);
+        stack<int> incr;
+        int root = INT_MAX;
+        // anti-poster:left->right->root root->right->left : 中大小
+        for (int i = postorder.size() - 1; i >= 0; --i) {
+            if (postorder[i] > root) return false;
+            while (!incr.empty() && incr.top() > postorder[i]) {
+                root = incr.top();
+                incr.pop();
+            }
+            incr.push(postorder[i]);
+        }
+        return true;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
