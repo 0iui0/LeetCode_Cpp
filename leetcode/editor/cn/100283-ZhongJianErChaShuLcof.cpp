@@ -48,27 +48,22 @@ using namespace std;
  */
 class Solution {
 private:
-    unordered_map<int, int> indexMap;
+    unordered_map<int, int> inorderIndexMap;
 public:
     TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
-        if (preorder.empty() || inorder.empty()) {
-            return nullptr;
-        }
-        for (int i = 0; i < inorder.size(); ++i) {
-            indexMap[inorder[i]] = i;
-        }
+        if (preorder.empty() || inorder.empty()) return nullptr;
+        for (int i = 0; i < inorder.size(); ++i) inorderIndexMap[inorder[i]] = i;
         return myBuildTree(preorder, inorder, 0, preorder.size() - 1, 0, inorder.size() - 1);
     }
 
-    TreeNode *myBuildTree(vector<int> &preorder, vector<int> &inorder, int preLeft, int preRight, int inLeft, int inRight) {
-        if (preLeft > preRight || inLeft > inRight) {
-            return nullptr;
-        }
-        int pIndex=indexMap[preorder[preLeft]];
-        int rootVal=inorder[pIndex];
-        TreeNode *root=  new TreeNode(rootVal);
-        root->left= myBuildTree(preorder,inorder,preLeft+1, pIndex+preLeft-inLeft,inLeft,pIndex-1);
-        root->right= myBuildTree(preorder,inorder,pIndex+preLeft-inLeft+1,preRight,pIndex+1,inRight);
+    TreeNode *
+    myBuildTree(vector<int> &preorder, vector<int> &inorder, int preLeft, int preRight, int inLeft, int inRight) {
+        if (preLeft > preRight || inLeft > inRight) return nullptr;
+        int rootIndex = inorderIndexMap[preorder[preLeft]];
+        TreeNode *root = new TreeNode(preorder[preLeft]);
+        root->left = myBuildTree(preorder, inorder, preLeft + 1, preLeft + rootIndex - inLeft, inLeft, rootIndex - 1);
+        root->right = myBuildTree(preorder, inorder, preLeft + rootIndex - inLeft + 1, preRight, rootIndex + 1,
+                                  inRight);
         return root;
     }
 };
