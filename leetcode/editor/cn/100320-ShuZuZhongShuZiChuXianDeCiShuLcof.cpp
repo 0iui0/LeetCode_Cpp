@@ -36,7 +36,7 @@ public:
     vector<int> singleNumbers(vector<int> &nums) {
         int x = 0, y = 0, mask = 1, xy = 0;
         for (int n:nums) xy = xy ^ n;
-        while (xy & mask) mask = mask << 1;
+        while (!(xy & mask)) mask = mask << 1;
         for (int n:nums) {
             if (n & mask) x = x ^ n;
             else y = y ^ n;
