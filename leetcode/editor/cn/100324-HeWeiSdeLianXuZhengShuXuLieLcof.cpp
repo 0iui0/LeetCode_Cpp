@@ -26,7 +26,7 @@
 //
 // 
 // Related Topics 数学 双指针 枚举 
-// 👍 307 👎 0
+// 👍 308 👎 0
 
 
 #include "include/headers.h"
@@ -37,7 +37,27 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int>> findContinuousSequence(int target) {
-
+        int i = 1, j = 2, s = 3;
+        vector<vector<int>> ans;
+        vector<int> tmp;
+        while (i < j) {
+            if (s == target) {
+                tmp.clear();
+                for (int k = i; k <= j; ++k) tmp.push_back(k);
+                ans.push_back(tmp);
+            }
+            if (s >= target) {
+                //hit:
+                s = s - i;
+                i++;
+            }
+            if (s < target) {
+                //hit:
+                j++;
+                s = s + j;
+            }
+        }
+        return ans;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
@@ -45,5 +65,5 @@ public:
 
 int main() {
     Solution s;
-    cout<< s <<endl;
+    cout << s << endl;
 }
