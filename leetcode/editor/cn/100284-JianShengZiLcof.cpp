@@ -36,15 +36,11 @@ public:
         if (n <= 3) {
             return n - 1;
         }
-        int num = n / 3;
+        int quo = n / 3;
         int rem = n % 3;
-        if (rem == 0) {
-            rem = 1;
-        } else if (rem == 1) {
-            num--;
-            rem += 3;
-        }
-        return pow(3, num) * rem;
+        if (rem == 0) return pow(3, quo);
+        if (rem == 1) return pow(3, quo - 1) * 4;
+        return pow(3, quo) * 2;
 
     }
 };

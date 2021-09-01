@@ -42,21 +42,16 @@ public:
         if (n <= 3) {
             return n - 1;
         }
-        int num = n / 3;
+        int quo = n / 3;
         int rem = n % 3;
-        if (rem == 0) {
-            rem = 1;
-        } else if (rem == 1) {
-            num--;
-            rem += 3;
+        long ans = 1;
+        int p = 1000000007;
+        for (int i = 0; i < quo - 1; ++i) {
+            ans = ans * 3 % p;
         }
-        // 中间变量还是用long
-        long rem0 = 1;
-//        求 3^num % 1000000007;
-        for (int i = 0; i < num; ++i) {
-            rem0 = (rem0 * 3) % 1000000007;
-        }
-        return (rem0 * rem) % 1000000007;
+        if (rem == 0) return ans * 3 % p;
+        if (rem == 1) return ans * 4 % p;
+        return ans * 6 % p;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
