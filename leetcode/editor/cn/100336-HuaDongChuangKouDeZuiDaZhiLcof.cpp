@@ -35,15 +35,15 @@ class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int> &nums, int k) {
         if (nums.size() < k || k <= 0) return {};
-        priority_queue<pair<int, int>> q;
-        for (int i = 0; i < k; ++i) q.emplace(nums[i], i);
-        vector<int> ans = {q.top().first};
-        for (int i = k; i < nums.size(); ++i) {
-            q.emplace(nums[i], i);
-            // 堆顶元素(最大值)如果是窗口左侧的，则删除，堆自动调整
-            while (q.top().second <= i - k) q.pop();
-            ans.push_back(q.top().first);
+        deque<int> maxIndex;
+        vector<int> ans;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (i >= k && !maxIndex.empty()) ans.push_back(nums[maxIndex.front()]);
+            while (!maxIndex.empty() && nums[i] > nums[maxIndex.back()]) maxIndex.pop_back();
+            while (!maxIndex.empty() && maxIndex.front() <= i - k) maxIndex.pop_front();
+            maxIndex.push_back(i);
         }
+        ans.push_back(nums[maxIndex.front()]);
         return ans;
     }
 };
