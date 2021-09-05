@@ -65,6 +65,7 @@ public:
     TreeNode *deserialize(string data) {
         if (data.empty()) return nullptr;
         vector<TreeNode *> nodes;
+        queue<TreeNode *> q;
         string val;
         istringstream iss(data);
         while (iss >> val) {
@@ -74,11 +75,22 @@ public:
                 nodes.push_back(new TreeNode(stoi(val)));
         }
         int p = 1;
-        for (int i = 0; i < nodes.size(); ++i) {
-            if (!nodes[i]) continue;
-            nodes[i]->left = nodes[p++];
-            nodes[i]->right = nodes[p++];
+        q.push(nodes[0]);
+        while (!q.empty()) {
+            TreeNode *tmp = q.front();
+            q.pop();
+            if (nodes[p]) {
+                tmp->left = nodes[p];
+                q.push(nodes[p]);
+            }
+            p++;
+            if (nodes[p]) {
+                tmp->right = nodes[p];
+                q.push(nodes[p]);
+            }
+            p++;
         }
+
         return nodes[0];
     }
 };
