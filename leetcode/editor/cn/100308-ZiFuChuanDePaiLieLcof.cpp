@@ -27,13 +27,28 @@ using namespace std;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+private:
+    vector<string> ans;
+
+    void dfs(string s, int x) {
+        if (x == s.size() - 1) {
+            ans.push_back(s);
+            return;
+        }
+        set<char> st;
+        for (int i = x; i < s.size(); ++i) {
+            if (st.find(s[i]) != st.end())
+                continue;
+            st.insert(s[i]);
+            swap(s[i], s[x]);
+            dfs(s, x + 1);
+            swap(s[x], s[i]);
+        }
+    }
+
 public:
     vector<string> permutation(string s) {
-        sort(s.begin(), s.end());
-        vector<string> ans;
-        do {
-            ans.push_back(s);
-        } while (next_permutation(s.begin(), s.end()));
+        dfs(s, 0);
         return ans;
     }
 };
