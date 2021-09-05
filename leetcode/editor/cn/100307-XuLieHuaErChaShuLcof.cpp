@@ -23,6 +23,7 @@
 // 👍 231 👎 0
 
 
+#include <sstream>
 #include "include/headers.h"
 
 using namespace std;
@@ -38,19 +39,47 @@ using namespace std;
  * };
  */
 class Codec {
-private:
-    TreeNode *root;
 public:
 
     // Encodes a tree to a single string.
     string serialize(TreeNode *r) {
-        root = r;
-        return "";
+        if (!r) return "";
+        queue<TreeNode *> q;
+        ostringstream oss;
+        q.push(r);
+        while (!q.empty()) {
+            TreeNode *tmp = q.front();
+            q.pop();
+            if (!tmp)
+                oss << "# ";
+            else {
+                oss << tmp->val << " ";
+                q.push(tmp->left);
+                q.push(tmp->right);
+            }
+        }
+        return oss.str();
     }
 
     // Decodes your encoded data to tree.
     TreeNode *deserialize(string data) {
-        return root;
+        if (data.empty()) return nullptr;
+        vector<TreeNode *> nodes;
+        string val;
+        istringstream iss(data);
+        while (iss >> val) {
+            if (val == "#")
+                nodes.push_back(nullptr);
+            else
+                nodes.push_back(new TreeNode(stoi(val)));
+        }
+        int p = 1;
+        for (int i = 0; i < nodes.size(); ++i) {
+            if (!nodes[i]) continue;
+            nodes[i]->left = nodes[p++];
+            nodes[i]->right = nodes[p++];
+        }
+        return nodes[0];
     }
 };
 
