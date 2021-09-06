@@ -31,12 +31,12 @@ public:
         int i2 = 0, i3 = 0, i5 = 0;
         int dp[n];
         dp[0] = 1;
-        for (int i = 1; i < n; ++i) {
+        for (int j = 1; j < n; ++j) {
             int n2 = dp[i2] * 2, n3 = dp[i3] * 3, n5 = dp[i5] * 5;
-            dp[i] = min(min(n2, n3), n5);
-            if (dp[i] == n2) i2++;
-            if (dp[i] == n3) i3++;
-            if (dp[i] == n5) i5++;
+            dp[j] = min(min(n2, n3), n5);
+            if (dp[j] == n2) i2++;
+            if (dp[j] == n3) i3++;
+            if (dp[j] == n5) i5++;
         }
         return dp[n - 1];
     }
