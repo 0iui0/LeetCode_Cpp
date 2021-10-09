@@ -39,20 +39,20 @@ public:
     int countDigitOne(int n) {
         int k = 1;
         long digit = 1;
-        int res = 0, high = n / 10, low = 0, cur = n % 10;
+        int cnt = 0, high = n / 10, low = 0, cur = n % 10;
         while (high || (cur && k)) {
             if (cur < k)
-                res += high * digit;
-            else if(cur == k)
-                res += (high - (k == 0)) * digit + low + 1;
+                cnt += high * digit;
+            else if (cur == k)
+                cnt += (high - (k == 0)) * digit + low + 1;
             else
-                res += (high + (k != 0)) * digit;
+                cnt += (high + (k != 0)) * digit;
             low += cur * digit;
             cur = high % 10;
             high /= 10;
             digit *= 10;
         }
-        return res + (k == 0);
+        return cnt + (k == 0);
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
