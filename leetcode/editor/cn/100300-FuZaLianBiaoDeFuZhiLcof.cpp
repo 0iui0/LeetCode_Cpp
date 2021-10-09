@@ -96,8 +96,8 @@ public:
         while (cur->next){
             pre->next=pre->next->next;
             cur->next=cur->next->next;
-            pre=pre->next->next;
-            cur=cur->next->next;
+            pre=pre->next;
+            cur=cur->next;
         }
         pre->next= nullptr;
         return res;
