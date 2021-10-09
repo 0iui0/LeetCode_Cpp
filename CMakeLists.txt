@@ -78,3 +78,4 @@ add_executable(100308-ZiFuChuanDePaiLieLcof leetcode/editor/cn/100308-ZiFuChuanD
 add_executable(100334-ChouShuLcof leetcode/editor/cn/100334-ChouShuLcof.cpp)
 add_executable(100309-OneNzhengShuZhong1chuXianDeCiShuLcof leetcode/editor/cn/100309-OneNzhengShuZhong1chuXianDeCiShuLcof.cpp)
 add_executable(100313-ShuZiXuLieZhongMouYiWeiDeShuZiLcof leetcode/editor/cn/100313-ShuZiXuLieZhongMouYiWeiDeShuZiLcof.cpp)
+add_executable(100318-ShuZuZhongDeNiXuDuiLcof leetcode/editor/cn/100318-ShuZuZhongDeNiXuDuiLcof.cpp)
