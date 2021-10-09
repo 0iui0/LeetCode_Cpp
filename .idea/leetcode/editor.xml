@@ -158,6 +158,7 @@
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/100285-JianShengZiIiLcof.cpp">
           <value>
             <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/100285-JianShengZiIiLcof.md" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/100285-JianShengZiIiLcof.cpp" />
               <option name="questionId" value="100285" />
             </LeetcodeEditor>
@@ -246,6 +247,7 @@
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/100296-DaYinCong1daoZuiDaDeNweiShuLcof.cpp">
           <value>
             <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/100296-DaYinCong1daoZuiDaDeNweiShuLcof.md" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/100296-DaYinCong1daoZuiDaDeNweiShuLcof.cpp" />
               <option name="questionId" value="100296" />
             </LeetcodeEditor>

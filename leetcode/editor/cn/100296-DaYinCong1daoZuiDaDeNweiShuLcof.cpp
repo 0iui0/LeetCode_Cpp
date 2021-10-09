@@ -26,14 +26,12 @@ using namespace std;
 class Solution {
 public:
     vector<int> printNumbers(int n) {
-        int num = 9;
-        for (int i = 1; i < n; ++i) {
-            num = num * 10 + 9;
-        }
-        vector<int> list;
-        list.reserve(num);
+        string s = "";
+        s.append(n,'9');
+        int num = stoi(s);
+        vector<int> list(num);
         for (int i = 0; i < num; ++i) {
-            list.emplace_back(i + 1);
+            list[i] = i + 1;
         }
         return list;
     }
@@ -43,7 +41,7 @@ public:
 
 int main() {
     Solution s;
-    for (auto n:s.printNumbers(2)) {
+    for (auto n: s.printNumbers(2)) {
         cout << n << endl;
     }
 }
