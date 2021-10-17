@@ -80,3 +80,4 @@ add_executable(100309-OneNzhengShuZhong1chuXianDeCiShuLcof leetcode/editor/cn/10
 add_executable(100313-ShuZiXuLieZhongMouYiWeiDeShuZiLcof leetcode/editor/cn/100313-ShuZiXuLieZhongMouYiWeiDeShuZiLcof.cpp)
 add_executable(100318-ShuZuZhongDeNiXuDuiLcof leetcode/editor/cn/100318-ShuZuZhongDeNiXuDuiLcof.cpp)
 add_executable(100339-NgeTouZiDeDianShuLcof leetcode/editor/cn/100339-NgeTouZiDeDianShuLcof.cpp)
+add_executable(146-ZeroLruCache leetcode/editor/cn/146-ZeroLruCache.cpp)
