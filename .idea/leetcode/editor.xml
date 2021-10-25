@@ -768,6 +768,15 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/15-Zero000003sum.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/15-Zero000003sum.md" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/15-Zero000003sum.cpp" />
+              <option name="questionId" value="15" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/17-letter-combinations-of-a-phone-number.cpp">
           <value>
             <LeetcodeEditor>
@@ -939,7 +948,8 @@
         <entry key="$PROJECT_DIR$/../LeetCode_LocalDebug/leetcode/editor/cn/leetcode/editor/cn/15-3sum.cpp">
           <value>
             <LeetcodeEditor>
-              <option name="path" value="$PROJECT_DIR$/../LeetCode_LocalDebug/leetcode/editor/cn/leetcode/editor/cn/15-3sum.cpp" />
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/15-Zero000003sum.md" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/15-Zero000003sum.cpp" />
               <option name="questionId" value="15" />
             </LeetcodeEditor>
           </value>
